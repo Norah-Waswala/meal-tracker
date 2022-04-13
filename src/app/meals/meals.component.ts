@@ -5,6 +5,7 @@ import { MealService } from '../meal-service/meal.service';
 import { AlertService } from '../alert-service/alert.service';
 import { HttpClient } from '@angular/common/http';
 import { Quote } from '../quote-class/quote';
+import { QuoteRequestService } from '../quote-http/quote-request.service';
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.component.html',
@@ -37,7 +38,7 @@ export class MealsComponent implements OnInit {
         }
       }
     }
-    constructor(mealService:MealService, alertService:AlertService, private http:HttpClient) {
+    constructor(mealService:MealService, alertService:AlertService,private quoteService:QuoteRequestService) {
       this.meals = mealService.getMeal()
       this.alertService = alertService;
     }
@@ -45,18 +46,21 @@ export class MealsComponent implements OnInit {
  
 
   ngOnInit():void {
-    interface ApiResponse{
-      author:string;
-      quote:string;
+    // interface ApiResponse{
+    //   author:string;
+    //   quote:string;
+    this.quoteService.quoteRequest()
+    this.quote = this.quoteService.quote
   }
-  this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
-    // Succesful API request
-    this.quote = new Quote(data.author, data.quote)
-  }, err=>{
-    this.quote = new Quote("Winston Churchill","Never never give up!")
-    console.log("An error occurred")
+//   this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
+//     // Succesful API request
+//     this.quote = new Quote(data.author, data.quote)
+//   }, err=>{
+//     this.quote = new Quote("Winston Churchill","Never never give up!")
+//     console.log("An error occurred")
     
-})
+// })
 
-}
+// }
+// }
 }
