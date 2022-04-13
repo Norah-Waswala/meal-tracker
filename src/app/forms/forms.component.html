@@ -1,0 +1,19 @@
+
+<div class="container">
+<form class="addform"(ngSubmit)='submitMeal(mealForm)' #mealForm="ngForm">
+<div class="form-control" >
+    <label for="mealName" class="form-label">name</label>
+    <input type="text"  id="mealName" name="mealName"  ngModel placeholder="">
+    
+  </div>
+  <div class="form-control">
+    <label for="calories" class="form-label">calories</label>
+    <input type="text"  id="calories" name="mealCalories"  ngModel>
+  </div>
+  <div class="form-control">
+    <label for="details" class="form-label">details</label>
+    <input type="text"  id="details" name="mealDetails"  ngModel >
+  </div>
+  <button type="submit" class='btn-btn-success'>submit</button>
+</form>
+</div>

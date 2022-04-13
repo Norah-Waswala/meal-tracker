@@ -1,0 +1,26 @@
+<app-forms (addMeals)="mealAdded($event)"></app-forms>
+<div class="container-fluid">
+    <!-- <ng-progress></ng-progress> -->
+    <h1>My meal tracker</h1>
+    <hr>
+
+<div>
+  
+  <ul>
+      <li *ngFor='let meal of meals'>
+        {{meal.mealName}},
+        {{meal.calories}}calories,
+        {{meal.details}}.
+        <button (click)="deleteMeal(meals[index])">del</button>
+      </li>
+  </ul>
+</div>
+  <div class="row">
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">{{quote.quote}}</p>
+      <footer class="blockquote-footer"><cite>{{quote.author}}</cite></footer>
+    </blockquote>
+  </div>
+</div>
+
+
